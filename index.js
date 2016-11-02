@@ -23,7 +23,7 @@ function getObj (len) {
     var obj = {};
 
     for (var i = 0; i < len; i++) {
-        obj['a' + i] = i;
+        obj['a' + i] = i + 'a';
     }
 
     return obj;
