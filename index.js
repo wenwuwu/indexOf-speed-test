@@ -58,30 +58,27 @@ function testIndexObj (objLen, searchTimes) {
 }
 
 function batchTest (len) {
-    logSeparator();
+    logBlankRow();
     testIndexArray(len, 100);
     testIndexObj(len, 100);
 
-    logSeparator();
+    logBlankRow();
     testIndexArray(len, 1000);
     testIndexObj(len, 1000);
 
-    logSeparator();
+    logBlankRow();
     testIndexArray(len, 10000);
     testIndexObj(len, 10000);
 
-    logSeparator();
+    logBlankRow();
     testIndexArray(len, 100000);
     testIndexObj(len, 100000);
 
-    logSeparator();
+    logBlankRow();
     testIndexArray(len, 1000000);
     testIndexObj(len, 1000000);
 }
 
-function logSeparator () {
-    logs += '--------------------------------------\n';
-}
 function logBlankRow () {
     logs += '\n';
 }
