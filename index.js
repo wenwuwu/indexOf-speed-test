@@ -1,7 +1,13 @@
 var fs = require('fs');
 
+var logs = "";
+
+logs += 'Speed comparison between indexOf Array and access properties of Object : \n';
+logs += '==============\n';
+logBlankRow();
+
 function logTimeElapse (startTime, prefix) {
-    console.log(prefix + (Date.now() - startTime) + 'ms');
+    logs += prefix + (Date.now() - startTime) + 'ms\n';
 }
 
 function getArr (len) {
@@ -74,9 +80,17 @@ function batchTest (len) {
 }
 
 function logSeparator () {
-    console.log('--------------------------------------');
+    logs += '--------------------------------------\n';
+}
+function logBlankRow () {
+    logs += '\n';
 }
 
 batchTest(100);
+logBlankRow();
 batchTest(1000);
-batchTest(10000);
+logBlankRow();
+// batchTest(10000);
+
+fs.writeFile('./README.md', logs, 'utf8');
+console.log(logs);
