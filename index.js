@@ -3,7 +3,6 @@ var fs = require('fs');
 var logs = "";
 
 logs += 'Speed comparison between indexOf Array and access properties of Object : \n';
-logs += '==============\n';
 logBlankRow();
 
 function logTimeElapse (startTime, prefix) {
@@ -58,27 +57,30 @@ function testIndexObj (objLen, searchTimes) {
 }
 
 function batchTest (len) {
-    logBlankRow();
+    logSeparator();
     testIndexArray(len, 100);
     testIndexObj(len, 100);
 
-    logBlankRow();
+    logSeparator();
     testIndexArray(len, 1000);
     testIndexObj(len, 1000);
 
-    logBlankRow();
+    logSeparator();
     testIndexArray(len, 10000);
     testIndexObj(len, 10000);
 
-    logBlankRow();
+    logSeparator();
     testIndexArray(len, 100000);
     testIndexObj(len, 100000);
 
-    logBlankRow();
+    logSeparator();
     testIndexArray(len, 1000000);
     testIndexObj(len, 1000000);
 }
 
+function logSeparator () {
+    logs += '-------------------------------------------\n';
+}
 function logBlankRow () {
     logs += '\n';
 }
@@ -86,7 +88,6 @@ function logBlankRow () {
 batchTest(100);
 logBlankRow();
 batchTest(1000);
-logBlankRow();
 // batchTest(10000);
 
 fs.writeFile('./readme.txt', logs, 'utf8');
