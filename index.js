@@ -56,7 +56,7 @@ function testIndexObj (objLen, searchTimes) {
     logTimeElapse(st, `Index of an object of length ${objLen} for ${searchTimes} times takes `);
 }
 
-function batchTest (len) {
+function batchTest (len, noLastOne) {
     logSeparator();
     testIndexArray(len, 100);
     testIndexObj(len, 100);
@@ -73,9 +73,11 @@ function batchTest (len) {
     testIndexArray(len, 100000);
     testIndexObj(len, 100000);
 
-    logSeparator();
-    testIndexArray(len, 1000000);
-    testIndexObj(len, 1000000);
+    if (noLastOne !== true) {
+        logSeparator();
+        testIndexArray(len, 1000000);
+        testIndexObj(len, 1000000);
+    }
 }
 
 function logSeparator () {
@@ -88,6 +90,8 @@ function logBlankRow () {
 batchTest(100);
 logBlankRow();
 batchTest(1000);
+logBlankRow();
+batchTest(10000, true);
 // batchTest(10000);
 
 fs.writeFile('./readme.txt', logs, 'utf8');
