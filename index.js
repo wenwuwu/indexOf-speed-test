@@ -89,5 +89,5 @@ batchTest(1000);
 logBlankRow();
 // batchTest(10000);
 
-fs.writeFile('./README.md', logs, 'utf8');
+fs.writeFile('./readme.txt', logs, 'utf8');
 console.log(logs);
